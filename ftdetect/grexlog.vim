@@ -1,1 +1,3 @@
-au BufNewFile,BufRead */AppData/Local/Grex/*.log set filetype=grexlog
+" Match log files under AppData and in dataset folders (matches a GUID
+" directory, possibly with a manually edited suffix, containing the Logs subdirectory.
+au BufNewFile,BufRead */AppData/Local/Grex/*.log,*/????????-????-????-????-????????????*/Logs/*.log set filetype=grexlog
