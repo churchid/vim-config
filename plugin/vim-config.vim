@@ -29,7 +29,7 @@ map <F12> :bn<C-m>
 	map <C-p> :tp<C-m>
 
 " RECOMMENDED STARTING SETTINGS FOR SYNTASTIC
-set statusline=%f%m    " Set initial "default" statusline
+set statusline=%<%f\ %h%m%r%=%-14.(%l/%L,%c%V%)\ %P     " Set initial "default" statusline
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
