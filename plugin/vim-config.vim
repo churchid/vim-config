@@ -1,6 +1,10 @@
 " Colorscheme
 if has('gui_running')
 	colorscheme solarized8_high
+	set background=light
+	set gfn=Bitstream_Vera_Sans_Mono:h12:cANSI
+	set lines=50
+	set columns=133
 else
 	colorscheme peachpuff
 endif
