@@ -1,43 +1,26 @@
 # vim-config
-Vundle plugin with my personal ViM preferences.
+Vim plugin with my personal ViM preferences.
 
-This is my .vimrc, roughly:
+This is my vimrc, roughly:
 
-    " BEGIN VUNDLE-REQUIRED SECTION
-    set nocompatible              " be iMproved, required
-    filetype off                  " required
+    call plug#begin('~/vimfiles/plugins')
 
-    " set the runtime path to include Vundle and initialize
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
-    " alternatively, pass a path where Vundle should install plugins
-    "call vundle#begin('~/some/path/here')
-
-    " let Vundle manage Vundle, required
-    Plugin 'VundleVim/Vundle.vim'
-    Plugin 'vim-syntastic/syntastic'
-    Plugin 'majutsushi/tagbar'
-    Plugin 'lifepillar/vim-solarized8'
-    Plugin 'vim-latex/vim-latex'
+    Plug 'vim-syntastic/syntastic'
+    Plug 'majutsushi/tagbar'
+    Plug 'lifepillar/vim-solarized8'
+    Plug 'vim-latex/vim-latex'
     " tabular is a prerequisite for plasticboy/vim-markdown
-    Plugin 'godlygeek/tabular'
-    Plugin 'plasticboy/vim-markdown'
-    Plugin 'churchid/vim-config'
+    Plug 'godlygeek/tabular'
+    Plug 'plasticboy/vim-markdown'
+    Plug 'churchid/vim-config'
 
-    " All of your Plugins must be added before the following line
-    call vundle#end()            " required
-    filetype plugin indent on    " required
-    " To ignore plugin indent changes, instead use:
-    "filetype plugin on
-    "
-    " Brief help
-    " :PluginList       - lists configured plugins
-    " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-    " :PluginSearch foo - searches for foo; append `!` to refresh local cache
-    " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-    "
-    " see :h vundle for more details or wiki for FAQ
-    " Put your non-Plugin stuff after this line
-    " END VUNDLE-REQUIRED SECTION
+    call plug#end()
 
-    source ~/.vim/vimrc
+    " These commands work around bugs running the Plug* commands under Windows.
+    " See https://github.com/junegunn/vim-plug/issues/852#issuecomment-696431055 for details.
+    " PlugUpdate
+    command! MyPlugUpdate   :set shell=cmd.exe shellcmdflag=/c noshellslash guioptions-=! <bar> noau PlugUpdate
+    " PlugInstall
+    command! MyPlugInstall  :set shell=cmd.exe shellcmdflag=/c noshellslash guioptions-=! <bar> noau PlugInstall
+    " PlugClean
+    command! MyPlugClean    :set shell=cmd.exe shellcmdflag=/c noshellslash guioptions-=! <bar> noau PlugClean
