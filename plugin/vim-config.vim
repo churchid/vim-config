@@ -1,4 +1,4 @@
-" Colorscheme
+﻿" Colorscheme
 if has('gui_running')
 	colorscheme solarized8_high
 	set background=light
