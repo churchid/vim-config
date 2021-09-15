@@ -1,8 +1,9 @@
-﻿" Colorscheme
+" ↳ <c-v>u21b3
+" Colorscheme
 if has('gui_running')
 	colorscheme solarized8_high
 	set background=light
-	set gfn=Bitstream_Vera_Sans_Mono:h12:cANSI
+	set gfn=Hack:h10:cANSI
 	set lines=50
 	set columns=133
 else
@@ -60,8 +61,9 @@ set laststatus=2
 set hls
 
 " Line wrapping preferences
-set sbr=«\      " Prefix for wrapped lines
-set nowrap
+" Prefix for wrapped lines
+set sbr=↳\ 
+set wrap
 
 " Selection behavior
 behave xterm               " vs. mswin behavior
