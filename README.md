@@ -1,7 +1,7 @@
 # vim-config
 Vim plugin with my personal ViM preferences.
 
-For a new installation, begin by installing `vim-plug`. See [https://github.com/junegunn/vim-plug]().
+For a new installation, begin by installing [`vim-plug`](https://github.com/junegunn/vim-plug).
 
 This is my vimrc, roughly:
 
