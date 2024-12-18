@@ -3,6 +3,7 @@ set expandtab
 set tw=132
 set sw=4
 set autoindent
+set fo=tlnr
 setlocal spell spelllang=en_us
 
 if !exists("g:markdown_build_cmd")
