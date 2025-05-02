@@ -3,7 +3,12 @@
 if has('gui_running')
 	colorscheme solarized8_high
 	set background=light
-	set gfn=Hack:h10:cANSI
+	if(has('win32'))
+		set gfn=Hack:h10:cANSI
+	else
+		set gfn=Hack\ 10
+	endif
+
 	set lines=50
 	set columns=133
 else
