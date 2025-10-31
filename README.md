@@ -15,6 +15,7 @@ This is my vimrc, roughly:
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
     Plug 'churchid/vim-config'
+    Plug 'preservim/vim-pencil'
 
     call plug#end()
 
