@@ -100,3 +100,9 @@ augroup Binary
 	au BufWritePost *.bin set nomod | endif
 augroup END
 
+if(has('win32'))
+	" Syntastic python support doesn't work right for me, and I haven't
+	" pursued it.
+	let g:syntastic_ignore_files= ['.py']
+endif
+
