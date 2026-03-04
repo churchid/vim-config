@@ -10,8 +10,10 @@ This is my vimrc, roughly:
     Plug 'vim-syntastic/syntastic'
     Plug 'majutsushi/tagbar'
     Plug 'lifepillar/vim-solarized8'
+    Plug 'rose-pine/vim'
     Plug 'vim-latex/vim-latex'
     " tabular is a prerequisite for plasticboy/vim-markdown
+    Plug 'itchyny/lightline.vim'
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
     Plug 'churchid/vim-config'
