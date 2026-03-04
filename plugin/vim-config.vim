@@ -1,10 +1,15 @@
 " ↳ <c-v>u21b3
 " Colorscheme
 if has('gui_running')
-	colorscheme solarized8_high
 	set background=light
+	colorscheme rosepine_dawn
+	let g:lightline = { 'colorscheme': 'rosepine_dawn' }
+	call lightline#init() | call lightline#update()
+	"colorscheme solarized8_high
 	if(has('win32'))
 		set gfn=Hack:h10:cANSI
+	elseif(has('macunix'))
+		set gfn=Hack-Regular:h14
 	else
 		set gfn=Hack\ 10
 	endif
