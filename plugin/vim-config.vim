@@ -24,24 +24,24 @@ syntax on
 
 " Global kep mappings
 "   Compilar output window and motion
-	map <F1> :copen<C-m>
-	map <S-F1> :cclose<C-m>
-	map <F2> :cn<C-m>
-	map <S-F2> :cp<C-m>
+map <F1> :copen<C-m>
+map <S-F1> :cclose<C-m>
+map <F2> :cn<C-m>
+map <S-F2> :cp<C-m>
 "   Location-List output window and motion
-	map <F3> :Error<C-m>
-	map <S-F3> :lclose<C-m>
-	map <F4> :lnext<C-m>
-	map <S-F4> :lprev<C-m>
+map <F3> :Error<C-m>
+map <S-F3> :lclose<C-m>
+map <F4> :lnext<C-m>
+map <S-F4> :lprev<C-m>
 map <F5> :Explore<C-m>
 map <S-F5> :Sexplore<C-m>
 map <F9> :BC<C-m>
 map <F11> :bp<C-m>
 map <F12> :bn<C-m>
 
-	" Movement between tags
-	map <C-n> :tn<C-m>
-	map <C-p> :tp<C-m>
+" Movement between tags
+map <C-n> :tn<C-m>
+map <C-p> :tp<C-m>
 
 " RECOMMENDED STARTING SETTINGS FOR SYNTASTIC
 set statusline=%<%f\ %h%m%r%=%-14.(%l/%L,%c%V%)\ %P     " Set initial "default" statusline
@@ -106,3 +106,63 @@ if(has('win32'))
 	let g:syntastic_ignore_files= ['.py']
 endif
 
+" Show relative path to file in the statusline instead of just the file name
+let g:lightline = {
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \ }
+      \ }
+" Ensure the above setting takes effect even if lightline has already loaded
+call lightline#init()
+
+" This is an alternative to the relative path function below that doesn't show
+" relative parent folders, but will show relative to home dir or root if
+" current file is not located underneath the CWD.
+"function! LightlineFilename()
+"  " 'expand("%:~:.")' gets the path relative to the current working directory
+"  "let l:path = expand('%:~:.')
+"  "" 'fnamemodify' with ':.' forces a relative path, and will use ../ if needed
+"  let l:path = fnamemodify(expand('%'), ':.')
+"
+"  " If it's an empty buffer, show [No Name]
+"  let l:name = l:path !=# '' ? l:path : '[No Name]'
+"
+"  " Append modify (+) or read-only (-) flags automatically
+"  let l:modified = &modified ? ' +' : ''
+"  let l:readonly = &readonly ? ' -' : ''
+"
+"  return l:name . l:readonly . l:modified
+"endfunction
+
+" This shows the relative path of the current file to the CWD even if the file
+" is above the current file in the path hierarchy.
+function! LightlineFilename()
+  let l:file = expand('%:p') " Get the full absolute path of the file
+  if empty(l:file)
+    return '[No Name]'
+  endif
+
+  let l:cwd = getcwd() . '/'
+
+  " If the file is inside the current working directory or a subdirectory
+  if l:file =~# '^' . l:cwd
+    let l:path = substitute(l:file, '^' . l:cwd, '', '')
+  else
+    " If the file is in a parent directory, calculate the '../' segments
+    let l:common = getcwd()
+    let l:dots = ''
+    while l:file !~# '^' . l:common && l:common !=# '/'
+      let l:common = fnamemodify(l:common, ':h')
+      let l:dots .= '../'
+    endwhile
+
+    let l:relative_part = substitute(l:file, '^' . l:common . '/', '', '')
+    let l:path = l:dots . l:relative_part
+  endif
+
+  " Handle modified and read-only flags
+  let l:modified = &modified ? ' +' : ''
+  let l:readonly = &readonly ? ' -' : ''
+
+  return l:path . l:readonly . l:modified
+endfunction

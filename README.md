@@ -5,6 +5,11 @@ For a new installation, begin by installing [`vim-plug`](https://github.com/june
 
 This is my vimrc, roughly:
 
+    let g:syntastic_python_pylint_args = "--max-line-length 120"
+
+    " More powerful matching
+    packadd! matchit
+
     call plug#begin('~/vimfiles/plugins')
 
     Plug 'vim-syntastic/syntastic'
