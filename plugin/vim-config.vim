@@ -39,6 +39,11 @@ map <F9> :BC<C-m>
 map <F11> :bp<C-m>
 map <F12> :bn<C-m>
 
+" Support for stripping ANSI color codes from text
+command! StripAnsi execute "keeppatterns %s/\\%x1b\\[[0-9;]*m//ge" | normal! ``
+nnoremap <S-F6> :StripAnsi<C-m>
+nnoremap <F6> :AnsiEsc<C-m>
+
 " Movement between tags
 map <C-n> :tn<C-m>
 map <C-p> :tp<C-m>

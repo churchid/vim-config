@@ -23,6 +23,7 @@ This is my vimrc, roughly:
     Plug 'plasticboy/vim-markdown'
     Plug 'churchid/vim-config'
     Plug 'preservim/vim-pencil'
+    Plug 'powerman/vim-plugin-AnsiEsc'
 
     call plug#end()
 
