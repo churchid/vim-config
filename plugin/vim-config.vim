@@ -2,9 +2,7 @@
 " Colorscheme
 if has('gui_running')
 	set background=light
-	colorscheme rosepine_dawn
-	let g:lightline = { 'colorscheme': 'rosepine_dawn' }
-	call lightline#init() | call lightline#update()
+	colorscheme kimbie-dark
 	"colorscheme solarized8_high
 	if(has('win32'))
 		set gfn=Hack:h10:cANSI
@@ -17,8 +15,16 @@ if has('gui_running')
 	set lines=50
 	set columns=133
 else
-	colorscheme peachpuff
+	colorscheme kimbie-dark
+	set termguicolors
 endif
+augroup EnactLightlineConfig
+	autocmd!
+	"let g:lightline = { 'colorscheme': 'rosepine_dawn' }
+	autocmd VimEnter * let g:lightline = { 'colorscheme': 'kimbie_dark' }
+		\ | call lightline#init()
+		\ | call lightline#update()
+augroup END
 
 syntax on
 
